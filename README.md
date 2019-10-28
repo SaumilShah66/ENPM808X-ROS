@@ -13,7 +13,7 @@ You can install ROS kinetic by following steps from [this](http://wiki.ros.org/k
 You need to run following commands to clone this repository and build the package present in this repository.
 
 ```
-git clone https://github.com/SaumilShah66/ENPM808X-ROS
+git clone https://github.com/SaumilShah66/beginner_tutorials
 cd ENPM808x-ROS
 catkin_make
 
