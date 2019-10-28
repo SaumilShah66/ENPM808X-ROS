@@ -1,0 +1,9 @@
+saumil@saumil-G5-5587:~/808X/ROS1/ENPM808X-ROS$ cpplint src/first_pkg/src/*.cpp
+Done processing src/first_pkg/src/listener.cpp
+Done processing src/first_pkg/src/talker.cpp
+
+saumil@saumil-G5-5587:~/808X/ROS1/ENPM808X-ROS$ cppcheck src/first_pkg/src/*.cpp 
+Checking src/first_pkg/src/listener.cpp...
+1/2 files checked 44% done
+Checking src/first_pkg/src/talker.cpp...
+2/2 files checked 100% done
