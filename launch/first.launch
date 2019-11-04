@@ -1,0 +1,9 @@
+<launch>
+  <arg name="publish_name" default="Saumil" />
+  <arg name="publish_frequency" default="10" />
+  <node pkg="first_pkg" type="string_service" name="string_service" respawn="true" />
+  <node pkg="first_pkg" type="talker" name="talker" launch-prefix="xterm -e" >
+     <param name="freq" value ="$(arg publish_frequency)" />
+  </node>
+  <node pkg="first_pkg" type="listener" name="listener" launch-prefix="xterm -e" />
+</launch>
