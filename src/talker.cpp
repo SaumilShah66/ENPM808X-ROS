@@ -33,9 +33,19 @@
 #include <string>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-// #include "begineer_tutorials/updateString.h"
+// #include ""
+#include "first_pkg/stringService.h"
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
+ */
+
+/**
+ * @brief Main function implementation to publish to 'chatter' topic and
+ * print the message and run a service simultaneously to change the sring message
+ * @param argc Number of parameters passed in command line
+ * @param argv Character pointer array pointing to the passed arguments
+ * @return 0 When the execution is successful
+ * @return 1 When fatal error stream is reached
  */
 int main(int argc, char **argv) {
   int frequencyVal = 10; // Frequency in Hz
