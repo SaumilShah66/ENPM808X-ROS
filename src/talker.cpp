@@ -50,6 +50,7 @@
 int main(int argc, char **argv) {
   int frequencyVal = 10; // Frequency in Hz
   std::string name = "Saumil"; // Default name
+  bool status=true;
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
@@ -104,7 +105,10 @@ int main(int argc, char **argv) {
    * NodeHandle destructed will close down the node.
    */
   ros::NodeHandle n;
-
+  // ros::ServiceClient client = n.serviceClient < first_pkg::stringService
+  //     > ("change_string_output");
+  // first_pkg::stringService srv;
+	
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -145,6 +149,14 @@ int main(int argc, char **argv) {
 
     ROS_INFO("%s", msg.data.c_str());
 
+    // srv.request.choice = status;
+    // if(client.call(srv)){
+    // 	msg.data = srv.response.name;
+    // 	ROS_INFO_STREAM(msg);
+    // }
+    // else{
+    // 	ROS_ERROR_STREAM("Falied service");
+    // }
     /**
      * The publish() function is how you send messages. The parameter
      * is the message object. The type of this object must agree with the type
