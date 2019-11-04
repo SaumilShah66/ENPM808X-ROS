@@ -1,26 +1,26 @@
 /**
-*MIT License
-*
-*Copyright (c) 2019 Saumil Shah
-*
-*Permission is hereby granted, free of charge, to any person obtaining a copy
-*of this software and associated documentation files (the "Software"), to deal
-*in the Software without restriction, including without limitation the rights
-*to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*copies of the Software, and to permit persons to whom the Software is
-*furnished to do so, subject to the following conditions:
-*
-*The above copyright notice and this permission notice shall be included in all
-*copies or substantial portions of the Software.
-*
-*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*SOFTWARE.
-*/
+ *MIT License
+ *
+ *Copyright (c) 2019 Saumil Shah
+ *
+ *Permission is hereby granted, free of charge, to any person obtaining a copy
+ *of this software and associated documentation files (the "Software"), to deal
+ *in the Software without restriction, including without limitation the rights
+ *to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *copies of the Software, and to permit persons to whom the Software is
+ *furnished to do so, subject to the following conditions:
+ *
+ *The above copyright notice and this permission notice shall be included in all
+ *copies or substantial portions of the Software.
+ *
+ *THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *SOFTWARE.
+ */
 
 /*
  * @file  talker.cpp
@@ -48,9 +48,9 @@
  * @return 1 When fatal error stream is reached
  */
 int main(int argc, char **argv) {
-  int frequencyVal = 10; // Frequency in Hz
-  std::string name = "Saumil"; // Default name
-  bool status=true;
+  int frequencyVal = 10;  // Frequency in Hz
+  std::string name = "Saumil";  // Default name
+  bool status = true;
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
@@ -62,42 +62,42 @@ int main(int argc, char **argv) {
    * part of the ROS system.
    */
 
-	std::stringstream sss;
-	std_msgs::String msgs;
+  std::stringstream sss;
+  std_msgs::String msgs;
   ros::init(argc, argv, "talker");
-  
+
   /// If no arguments are passed
-  if(argc==1){
-  	ROS_ERROR_STREAM("You have passed no arguments.Will have to set default values.");
-  	ROS_INFO_STREAM("Setting name " << name);
-  	ROS_INFO_STREAM("Setting frequency " << frequencyVal);
+  if (argc == 1) {
+    ROS_ERROR_STREAM(
+        "You have passed no arguments.Will have to set default values.");
+    ROS_INFO_STREAM("Setting name " << name);
+    ROS_INFO_STREAM("Setting frequency " << frequencyVal);
   }
 
   /// If only one argument is passed
-  if (argc==2){
-  	ROS_DEBUG_STREAM("1 argument passed");
-  	ROS_WARN_STREAM("You have not specified frequency. Default frequency will be taken.");
-  	name = argv[1];
-  	ROS_INFO_STREAM("Setting name " << name);
-  	ROS_INFO_STREAM("Setting frequency " << frequencyVal);	
+  if (argc == 2) {
+    ROS_DEBUG_STREAM("1 argument passed");
+    ROS_WARN_STREAM(
+        "You have not specified frequency. Default frequency will be taken.");
+    name = argv[1];
+    ROS_INFO_STREAM("Setting name " << name);
+    ROS_INFO_STREAM("Setting frequency " << frequencyVal);
   }
 
   /// If two arguments are passed
-  if (argc==3){
-  	ROS_DEBUG_STREAM("2 arguments passed");
-  	/// Second argument is frequency. Value of frequency cannot be negative or zero 
-  	if(atoi(argv[2])<=0){
-  		ROS_FATAL_STREAM("Passed argument of frequency cannot work");
-  		ros::shutdown();
-  	}
-  	else{
-  		frequencyVal = atoi(argv[2]);
-  	}
-  	name = argv[1];
-  	ROS_INFO_STREAM("Setting name " << name);
-  	ROS_INFO_STREAM("Setting frequency " << frequencyVal);	
+  if (argc == 3) {
+    ROS_DEBUG_STREAM("2 arguments passed");
+    /// Second argument is frequency. Value of frequency cannot be negative or zero
+    if (atoi(argv[2]) <= 0) {
+      ROS_FATAL_STREAM("Passed argument of frequency cannot work");
+      ros::shutdown();
+    } else {
+      frequencyVal = atoi(argv[2]);
+    }
+    name = argv[1];
+    ROS_INFO_STREAM("Setting name " << name);
+    ROS_INFO_STREAM("Setting frequency " << frequencyVal);
   }
-
 
   /**
    * NodeHandle is the main access point to communications with the ROS system.
@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
   // ros::ServiceClient client = n.serviceClient < first_pkg::stringService
   //     > ("change_string_output");
   // first_pkg::stringService srv;
-	
+
   /**
    * The advertise() function is how you tell ROS that you want to
    * publish on a given topic name. This invokes a call to the ROS
@@ -151,11 +151,11 @@ int main(int argc, char **argv) {
 
     // srv.request.choice = status;
     // if(client.call(srv)){
-    // 	msg.data = srv.response.name;
-    // 	ROS_INFO_STREAM(msg);
+    // msg.data = srv.response.name;
+    // ROS_INFO_STREAM(msg);
     // }
     // else{
-    // 	ROS_ERROR_STREAM("Falied service");
+    // ROS_ERROR_STREAM("Falied service");
     // }
     /**
      * The publish() function is how you send messages. The parameter
