@@ -17,7 +17,7 @@ You need to run following commands to clone this repository and build the packag
 
 ```
 git clone https://github.com/SaumilShah66/beginner_tutorials
-cd ENPM808x-ROS
+cd beginner_tutorials
 catkin_make
 
 ```
@@ -29,17 +29,29 @@ After package is successfully built you can try running it. To run this package 
 roscore
 ```
 ### In terminal 2
-Make sure you are in ENPM808X-ROS directory
+Make sure you are in beginner_tutorials directory
 ```
-cd ENPM808X-ROS 
+cd beginner_tutorials 
 source ./devel/setup.bash
 rosrun first_pkg listener
 ```
 
 ### In terminal 3
-Make sure you are in ENPM808X-ROS directory
+Make sure you are in beginner_tutorials directory
 ```
-cd ENPM808X-ROS 
+cd beginner_tutorials 
 source ./devel/setup.bash
 rosrun first_pkg talker
+```
+
+### Run with roslaunch
+Instead of opening different terminals you can run both nodes with one launch file.
+
+```
+roslaunch first_pkg first.launch
+``` 
+
+### Run with commandline arguments
+```
+roslaunch first_pkg first.launch publish_frequency:=10 publish_name:="Saumil"
 ```
