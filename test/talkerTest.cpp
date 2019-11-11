@@ -30,21 +30,21 @@
  */
 
 #include <string>
-#include <iostream>
-#include <gtest/gtest.h>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include <gtest/gtest.h>
+
 
 /*
  * Declaring test fixture NodeTest to subscribe to topic
  * "chatter" and test is it publishing or not
  */
-class NodeTest: public::testing::Test {
+class NodeTest : public ::testing::Test {
  protected:
   ros::NodeHandle nh;
   std::string testString;
-  NodeTest(){
-	auto sub = nh.subscribe("chatter", 100, &NodeTest::testCallback, this);
+  NodeTest() {
+    auto sub = nh.subscribe("chatter", 100, &NodeTest::testCallback, this);
     int i = 0;
     ros::Rate rate(10);
     /// Will read 30 messages
@@ -52,11 +52,10 @@ class NodeTest: public::testing::Test {
       ros::spinOnce();
       ++i;
       rate.sleep();
-    	}
-	}
+    }
+  }
   void testCallback(const std_msgs::String::ConstPtr &msg);
 };
-
 
 void NodeTest::testCallback(const std_msgs::String::ConstPtr &msg) {
   testString = msg->data;
@@ -68,9 +67,8 @@ TEST_F(NodeTest, testTalker) {
   EXPECT_GT(testString.size(), 0);
 }
 
-
 int main(int argc, char **argv) {
-	testing::InitGoogleTest(&argc, argv);
-	ros::init(argc, argv, "talkerTest");
-	return RUN_ALL_TESTS();
+  testing::InitGoogleTest(&argc, argv);
+  ros::init(argc, argv, "talkerTest");
+  return RUN_ALL_TESTS();
 }
