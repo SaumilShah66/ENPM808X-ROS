@@ -4,6 +4,5 @@
   <node pkg="first_pkg" type="talker" name="talker" launch-prefix="xterm -e" >  
      <param name="freq" value ="$(arg publish_frequency)" />
   </node>
-    <node pkg="first_pkg" type="listener" name="listener" launch-prefix="xterm -e" />
-  <test test-name="talkerTest" pkg="first_pkg" type="talker_test" />
+  <test test-name="talkerTest" pkg="first_pkg" type="talkerTest" />
 </launch>
