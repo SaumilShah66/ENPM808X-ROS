@@ -132,3 +132,11 @@ With the help of rqt_tf_tree you can view the tree of frames being broadcasted o
 ```
 rosrun rqt_tf_tree rqt_tf_tree
 ```
+
+### Check cpplint and cppcheck
+Google C++ style guide has been followed in this project. You can check cpplint errors and cppcheck errors with following commands
+```
+cd catkin_ws/src/beginner_tutorials
+cpplint src/*.cpp
+cppcheck src/*.cpp
+```
