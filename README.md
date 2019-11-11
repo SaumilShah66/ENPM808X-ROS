@@ -1,9 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ---
 
-# ENPM808X-ROS
-Ros publisher subscriber tutorial
-
 # Dependencies
 
 * Ubuntu 16.04
