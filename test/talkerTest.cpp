@@ -36,48 +36,36 @@
 #include "std_msgs/String.h"
 
 /*
- * Declaring test fixture CheckTest that will subscribe to topic
- * "chatter" published by node under testing
+ * Declaring test fixture NodeTest to subscribe to topic
+ * "chatter" and test is it publishing or not
  */
-class CheckTest {
- public:
+class NodeTest: public::testing::Test {
+ protected:
   ros::NodeHandle nh;
-  std::string a;
-  CheckTest();
-  ~CheckTest();
-  void SetUp() {
-  	std::cout << "Came in setup\n";
-
-    auto sub = nh.subscribe("chatter", 100, &CheckTest::testChatterCallback, this);
-    int i = 1;
-    ros::Rate rate(5);
-    while (i < 10) {
+  std::string testString;
+  NodeTest(){
+	auto sub = nh.subscribe("chatter", 100, &NodeTest::testCallback, this);
+    int i = 0;
+    ros::Rate rate(10);
+    /// Will read 30 messages
+    while (i < 30) {
       ros::spinOnce();
       ++i;
       rate.sleep();
-    }
-    std::cout << "Leaving setup\n";
-  }
-  void testChatterCallback(const std_msgs::String::ConstPtr &msg);
+    	}
+	}
+  void testCallback(const std_msgs::String::ConstPtr &msg);
 };
 
-CheckTest::CheckTest(){
-}
-CheckTest::~CheckTest(){
-}
 
-void CheckTest::testChatterCallback(const std_msgs::String::ConstPtr &msg) {
-  std::cout << "Came\n" ;
-  a = msg->data;
+void NodeTest::testCallback(const std_msgs::String::ConstPtr &msg) {
+  testString = msg->data;
   return;
 }
 
-TEST(CheckTest_, testTalker) {
-	CheckTest tester;
-	tester.SetUp();
-	std::cout << "Instance\n";
-  // std::cout << tester.a ;
-  EXPECT_GT(tester.a.size(), 0);
+TEST_F(NodeTest, testTalker) {
+  /// Should have read more than zero characters
+  EXPECT_GT(testString.size(), 0);
 }
 
 
