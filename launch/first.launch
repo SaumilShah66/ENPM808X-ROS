@@ -6,6 +6,5 @@
      <param name="freq" value ="$(arg publish_frequency)" />
   </node>
   <node pkg="first_pkg" type="listener" name="listener" launch-prefix="xterm -e" />
-  <node pkg="rosbag" type="record" name="data_recorder" args="-a -O $(find first_pkg)/results/" if="$(arg data_recorder)"/>
-
+  <node pkg="rosbag" type="record" name="data_recorder" args="-a -O $(find first_pkg)/results/record.bag" if="$(arg data_recorder)"/>
 </launch>
