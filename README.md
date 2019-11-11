@@ -83,7 +83,7 @@ When you set data_record:=1 it will record all the published data, until you kil
 
 You can use "rosbag info" command to check details about that bag file. One bage file is provided in this repository and you can use following command to get it details.
 ```
-cd catkin_ws
+cd catkin_ws/src/beginner_tutorials
 rosbag info results/2019-11-11-13-12-43.bag
 ```
 It will give you following results
@@ -103,4 +103,21 @@ topics:      /chatter      148 msgs    : std_msgs/String
              /rosout       301 msgs    : rosgraph_msgs/Log  (3 connections)
              /rosout_agg   296 msgs    : rosgraph_msgs/Log 
              /tf           148 msgs    : tf2_msgs/TFMessage
+```
+
+## Play recorded data
+
+This recorded data can be used for testing of training purposes. You can publish data from this bag file which can be subscribed by any active subsciber. Run following commands to do that. You need 2 terminals to do this.
+
+### In terminal 1
+```
+cd catkin_ws/src/beginner_tutorials
+rosbag play results/2019-11-11-13-12-43.bag
+```
+
+### In terminal 2
+```
+cd catkin_ws
+source devel/setup.bach
+rosrun first_pkg listener
 ```
