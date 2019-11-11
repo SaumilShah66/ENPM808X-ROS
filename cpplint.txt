@@ -1,10 +1,12 @@
-saumil@saumil-G5-5587:~/808X/ROS1/src/beginner_tutorials$ cpplint src/*.cpp
+$ cpplint src/*.cpp
 Done processing src/listener.cpp
 src/stringServiceServer.cpp:39:  Is this a non-const reference? If so, make const or use a pointer: first_pkg::stringService::request &req  [runtime/references] [2]
 src/stringServiceServer.cpp:40:  Is this a non-const reference? If so, make const or use a pointer: first_pkg::stringService::response &resp  [runtime/references] [2]
 src/stringServiceServer.cpp:67:  Is this a non-const reference? If so, make const or use a pointer: first_pkg::stringService::request &req  [runtime/references] [2]
 src/stringServiceServer.cpp:68:  Is this a non-const reference? If so, make const or use a pointer: first_pkg::stringService::response &resp  [runtime/references] [2]
 Done processing src/stringServiceServer.cpp
-src/talker.cpp:90:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+src/talker.cpp:102:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+src/talker.cpp:184:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
 Done processing src/talker.cpp
-Total errors found: 5
+Total errors found: 6
+
