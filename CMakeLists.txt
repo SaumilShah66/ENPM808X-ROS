@@ -198,12 +198,20 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-catkin_add_gtest(${PROJECT_NAME}-test test/talker.test test/talkerTest.cpp)
 
-if(TARGET ${PROJECT_NAME}-test)
+if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
-  target_link_libraries(${PROJECT_NAME}-test ${catkin_LIBRARIES})
+  add_rostest_gtest(talkerTest test/talker.test test/talkerTest.cpp)
+  target_link_libraries(talkerTest ${catkin_LIBRARIES})
 endif()
+
+
+#catkin_add_gtest(${PROJECT_NAME}-test test/talker.test test/talkerTest.cpp)
+
+#if(TARGET ${PROJECT_NAME}-test)
+#  find_package(rostest REQUIRED)
+#  target_link_libraries(${PROJECT_NAME}-test ${catkin_LIBRARIES})
+#endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
