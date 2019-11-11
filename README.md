@@ -121,3 +121,17 @@ cd catkin_ws
 source devel/setup.bach
 rosrun first_pkg listener
 ```
+
+# View broadcasted tf frames
+Make sure that talker node is running. You can directly use launch file to do that. With rostopic echo you can view the values of tf broadcasted by that node.
+
+```
+roslaunch first_pkg talker
+rostopic echo /tf
+```
+
+With the help of rqt_tf_tree you can view the tree of frames being broadcasted over ROS.
+
+```
+rosrun rqt_tf_tree rqt_tf_tree
+```
