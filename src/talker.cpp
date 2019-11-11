@@ -35,6 +35,8 @@
 #include "std_msgs/String.h"
 // #include ""
 #include "first_pkg/stringService.h"
+#include "tf/transform_broadcaster.h"
+
 /**
  * This tutorial demonstrates simple sending of messages over the ROS system.
  */
@@ -48,6 +50,18 @@
  * @return 1 When fatal error stream is reached
  */
 int main(int argc, char **argv) {
+
+  ros::init(argc, argv, "talker");
+
+  /// Inializing tf broadcaster
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
+  
+  transform.setOrigin(tf::Vector3(1.0,1.0,1.0));
+  tf::Quaternion q;
+  q.setRPY(1.57,1.57,1.57);
+  transform.setRotation(q);
+
   int frequencyVal = 10;  // Frequency in Hz
   std::string name = "Saumil";  // Default name
   bool status = true;
@@ -64,7 +78,6 @@ int main(int argc, char **argv) {
 
   std::stringstream sss;
   std_msgs::String msgs;
-  ros::init(argc, argv, "talker");
 
   /// If no arguments are passed
   if (argc == 1) {
@@ -169,6 +182,8 @@ int main(int argc, char **argv) {
 
     loop_rate.sleep();
     ++count;
+    // auto tfMsg = tf::StampedTrasform(transform, ros::Time::now(), "world", "talk");
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
   }
 
   return 0;
